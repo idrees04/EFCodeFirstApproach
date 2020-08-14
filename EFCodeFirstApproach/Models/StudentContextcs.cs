@@ -12,6 +12,7 @@ namespace EFCodeFirstApproach.Models
         // DBContext class will exchange data in between database and student model class
         public DbSet<Student> students { get; set;}
         //DBSet will store data of Model class Student.cs 
+        //table name will be students
 
     }
 }

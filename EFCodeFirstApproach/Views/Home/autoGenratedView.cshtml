@@ -5,7 +5,12 @@
 }
 
 <h2>autoGenratedView</h2>
+@*Html.Raw class is used top generate script
+@Html.Raw(TempData["InsertMewssage"])*@
+
 @*i just add ID colument in table other all added autometicly*@ 
+<p style="color:green;">@TempData["InsertMewssage"]</p>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
