@@ -51,6 +51,7 @@ namespace EFCodeFirstApproach.Controllers
         }
         public ActionResult Edit(int id)
         {
+            // this mathod will take to Edit View
             // if model of id is equal to database of student id then  FirstOrDefault() method will store row in (var row).
             var row = db.students.Where(model => model.Id == id).FirstOrDefault();
             return View(row);
@@ -58,10 +59,10 @@ namespace EFCodeFirstApproach.Controllers
         [HttpPost]
         public ActionResult Edit(Student s)
         {
+            // HttpPost method of Edit will update data to database
+            // this method will run wihen we will click on Edit button
             if (ModelState.IsValid == true)
             {
-                // this method will run wihen we will click on button
-
                 db.Entry(s).State = EntityState.Modified;
                 int a = db.SaveChanges();
                 if (a > 0)
@@ -76,14 +77,31 @@ namespace EFCodeFirstApproach.Controllers
                     ViewBag.UpdateMessage = "<script>alert('Data Not Updated')</script>";
                 }
             }
-
-
-
-
-
-
-
                 return View();
         }
+        public ActionResult Delete(int id)
+        {
+            // this mathod will take to delete View
+
+            if (id > 0)
+            {
+                var StudentIdRow = db.students.Where(model => model.Id == id).FirstOrDefault();
+                if(StudentIdRow != null)
+                {
+                    db.Entry(StudentIdRow).State = EntityState.Deleted;
+                    int a=db.SaveChanges();
+                    if(a>0)
+                    {
+                        TempData["DeleteMessage"] = "Data Deleted";
+                    }
+                    else
+                    {
+                        TempData["DeleteMessage"] = "<script>alert('Data Not Deleted')</script>";
+                    }                 
+                }
+            }
+            return RedirectToAction("autoGenratedView");
+        }
+
     }
 }
