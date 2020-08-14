@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<EFCodeFirstApproach.Models.Student>
 
+@*DATABASE-FIRST APPROACH OF ENTITY FRAMEWORK IN ASP.NET MVC 5
+•	In the database-first approach the Entity Framework creates model classes and properties corresponding to the existing database objects, such as tables and columns.
+•	The database-first approach is applicable in scenario where a database already exists for the application.*@
+
+
+
 @{
     ViewBag.Title = "autoGenratedView";
 }
@@ -17,9 +23,9 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -35,9 +41,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

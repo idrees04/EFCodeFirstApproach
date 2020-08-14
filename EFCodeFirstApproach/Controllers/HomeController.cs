@@ -102,6 +102,10 @@ namespace EFCodeFirstApproach.Controllers
             }
             return RedirectToAction("autoGenratedView");
         }
-
+        public ActionResult Details(int id)
+        {
+            var DetailsById = db.students.Where(model => model.Id == id).FirstOrDefault();
+            return View(DetailsById);
+        }
     }
 }
